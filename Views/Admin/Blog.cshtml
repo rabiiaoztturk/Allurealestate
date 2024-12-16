@@ -1,0 +1,106 @@
+﻿@model List<Blog>
+
+@{
+    Layout = "_AdminBlogLayout";
+}
+
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th scope="col" width="1%">Image</th>
+            <th scope="col" width="1%">Title</th>
+            <th scope="col" width="1%">Description</th>
+            <th scope="col" width="5%">CRUD</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var Blog in Model)
+        {
+            <tr>
+                <td>
+                    <div id="propertyCarousel_@Blog.Id" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            @foreach (var image in Blog.ImageUrls)
+                            {
+                                <div class="carousel-item @(image == Blog.ImageUrls.First() ? "active" : "")">
+                                    <img src="@image" class="d-block w-100 house-image" alt="@Blog.Title" />
+                                </div>
+                            }
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#propertyCarousel_@Blog.Id" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#propertyCarousel_@Blog.Id" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </td>
+                <td>@Blog.Title</td>
+                <td style="max-width: 200px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                    @Blog.Description
+                </td>
+                <td>
+                    <a href="/admin/EditBlogForm/@Blog.Id" class="btn btn-outline-secondary">✍️ Edit</a>
+                    <a href="/admin/DeleteBlog/@Blog.Id" onclick="return confirm('Are you sure you want to delete this Blog?')" class="btn btn-outline-secondary">🗑️ Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<style>
+    .table {
+        width: 100%;
+        margin-bottom: 1.5rem;
+        border-collapse: collapse;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+        .table thead {
+            background-color: #343a40;
+            color: #fff;
+        }
+
+    .table-bordered th, .table-bordered td {
+        border: 1px solid #dee2e6;
+        padding: 0.75rem;
+        text-align: center;
+    }
+
+    .table-hover tbody tr:hover {
+        background-color: #f1f3f5;
+    }
+
+    .table tbody tr {
+        transition: all 0.3s;
+    }
+
+    .house-image {
+        width: 100%; /* Resimlerin tam genişlikte görünmesini sağlar */
+        height: 120px; /* Resim yüksekliğini ayarlayarak görselin boyutlarını kontrol edebilirsiniz */
+        object-fit: cover; /* Resimleri düzgün şekilde kesip uyumlu hale getirir */
+        border-radius: 8px; /* Resimlere yuvarlak köşe efekti verir */
+    }
+
+    /* Resimlerin tablonun içine düzgün şekilde oturması için */
+    .carousel-inner {
+        width: 100%; /* Resimlerin genişliği */
+        height: 120px; /* Resim yüksekliğini tablo hücresine uyacak şekilde ayarladık */
+    }
+
+    .carousel-control-prev, .carousel-control-next {
+        display: none; /* Karuseldeki ön/sonraki butonlarını gizler */
+    }
+</style>
+
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+

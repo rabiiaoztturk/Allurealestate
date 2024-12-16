@@ -1,0 +1,601 @@
+﻿@model Blog
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]Blog Detail </title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/fonts.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/bootstrap.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Allurerealstate.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/css/lightgallery.min.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery (opsiyonel) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.2.96/css/materialdesignicons.min.css" rel="stylesheet">
+
+    <style>
+        .ie-panel {
+            display: none;
+            background: #212121;
+            padding: 10px 0;
+            box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3);
+            clear: both;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        img {
+            display: block;
+            visibility: visible;
+        }
+
+
+        .rd-navbar-brand img {
+            z-index: 9999;
+            position: relative;
+        }
+
+
+        html.ie-10 .ie-panel, html.lt-ie-10 .ie-panel {
+            display: block;
+        }</style>
+
+</head>
+<body>
+    <header class="section novi-background page-header">
+        <!-- RD Navbar-->
+        <div class="rd-navbar-wrap">
+            <nav class="rd-navbar rd-navbar-corporate" data-layout="rd-navbar-fixed" data-sm-layout="rd-navbar-fixed" data-md-layout="rd-navbar-fixed" data-md-device-layout="rd-navbar-fixed" data-lg-layout="rd-navbar-static" data-lg-device-layout="rd-navbar-static" data-lg-stick-up="true" data-lg-stick-up-offset="118px" data-xl-layout="rd-navbar-static" data-xl-device-layout="rd-navbar-static" data-xl-stick-up="true" data-xl-stick-up-offset="118px" data-xxl-layout="rd-navbar-static" data-xxl-device-layout="rd-navbar-static" data-xxl-stick-up-offset="118px" data-xxl-stick-up="true">
+                <div class="rd-navbar-aside-outer">
+                    <div class="rd-navbar-aside">
+                        <!-- RD Navbar Panel-->
+                        <div class="rd-navbar-panel">
+                            <!-- RD Navbar Toggle-->
+                            <button class="rd-navbar-toggle" data-rd-navbar-toggle="#rd-navbar-nav-wrap-1"><span></span></button>
+                            <!-- RD Navbar Brand--><a class="rd-navbar-brand" href="/"><img src="~/images/Allure real estate- silver logo-1.png" alt="" width="151" height="44" srcset="images/Allure real estate- silver logo-1.png 2x" /></a>
+                        </div>
+                        <div class="rd-navbar-collapse">
+                            <button class="rd-navbar-collapse-toggle rd-navbar-fixed-element-1" data-rd-navbar-toggle="#rd-navbar-collapse-content-1"><span></span></button>
+                            <div class="rd-navbar-collapse-content" id="rd-navbar-collapse-content-1">
+                                <article class="unit align-items-center">
+                                    <div class="navbar-signature">
+                                        "Your Dream Home Awaits"
+                                    </div>
+                                </article>
+                                <article class="unit align-items-center">
+                                    <div class="unit-left"><span class="icon novi-icon icon-md icon-modern mdi mdi-email"></span></div>
+                                    <div class="unit-body">
+                                        <a class="link-default" href="mailto:info@allurealestate.com">
+                                            info@allurealestate.com
+                                        </a>
+                                    </div>
+                                </article>
+                                <a class="button button-gray-bordered button-winona" href="/contact">Request a call</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="rd-navbar-main-outer">
+                    <div class="rd-navbar-main">
+                        <div class="rd-navbar-nav-wrap" id="rd-navbar-nav-wrap-1">
+                            <!-- RD Navbar Nav-->
+                            <ul class="rd-navbar-nav">
+                                <li class="rd-nav-item active">
+                                    <a class="rd-nav-link" href="/">Home</a>
+                                </li>
+                                <li class="rd-nav-item">
+                                    <a class="rd-nav-link" href="/House">Houses</a>
+                                </li>
+                                <li class="rd-nav-item">
+                                    <a class="rd-nav-link" href="/blog">Blog</a>
+                                </li>
+                                <li class="rd-nav-item">
+                                    <a class="rd-nav-link" href="/contact">Contacts</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <section class="section novi-background breadcrumbs-custom bg-image context-dark" style="background-image: url(/images/EXTERIOR%2015.jpg);">
+        <div class="breadcrumbs-custom-inner">
+            <div class="container breadcrumbs-custom-container">
+                <div class="breadcrumbs-custom-main">
+                    <h6 class="breadcrumbs-custom-subtitle title-decorated">Detail</h6>
+                    <h2 class="text-uppercase breadcrumbs-custom-title">Detail</h2>
+                </div>
+                <ul class="breadcrumbs-custom-path">
+                    <li><a href="/Blog">Blog</a></li>
+                    <li class="active">Detail</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <br />
+    <br />
+    <body>
+        <body>
+            <div class="row row-lg-50 row-35 offset-top-2">
+                <div class="col-md-12 wow-outer">
+                    <article class="property-detail wow slideInLeft">
+                        <div class="property-content">
+                            <!-- Sol Taraf: Carousel -->
+                            <div class="album-container">
+                                @if (Model.ImageUrls?.Count > 0)
+                                {
+                                    <div id="imageCarousel_@Model.Id" class="carousel slide carousel-fade album-carousel custom-carousel" data-bs-ride="carousel">
+                                        <div class="carousel-inner">
+                                            @for (int i = 0; i < Model.ImageUrls.Count; i++)
+                                            {
+                                                <div class="carousel-item @(i == 0 ? "active" : "")">
+                                                    <img src="@Model.ImageUrls[i]" alt="@Model.Title" class="d-block w-100 album-carousel-imggg" id="carouselImage_@i" />
+                                                </div>
+                                            }
+                                        </div>
+
+                                        <!-- Sol Ok Butonu (Previous) -->
+@*                                         <button class="carousel-control-prev" type="button" data-bs-target="#imageCarousel_@Model.Id" data-bs-slide="prev">
+                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Previous</span>
+                                        </button>
+
+                                        <!-- Sağ Ok Butonu (Next) -->
+                                        <button class="carousel-control-next" type="button" data-bs-target="#imageCarousel_@Model.Id" data-bs-slide="next">
+                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Next</span>
+                                        </button> *@
+                                    </div>
+
+                                    <!-- Büyük Fotoğraflar Butonu (Mega Photo) -->
+                                  @*   <div class="text-center mt-3">
+                                        <button class="btn btn-secondary" onclick="openFullscreenGallery()">
+                                            <span class="bi bi-search" style="display: inline-block; vertical-align: middle; margin-right: 10px;"></span> Mega Photo
+                                        </button>
+                                    </div> *@
+
+                                    <!-- Galeri: Küçük Fotoğraflar -->
+                                  @*   <div id="image-gallery" class="image-gallery mt-4 d-flex justify-content-center flex-wrap">
+                                        <!-- Fotoğraflar burada dinamik olarak yüklenecek -->
+                                    </div> *@
+
+                                    <!-- Sayfalama Butonları -->
+                                  @*   <div class="pagination-buttons text-center mt-3">
+                                        <button class="btn btn-secondary" onclick="changePage(-1)">&#8592;</button> <!-- Sol ok işareti -->
+                                        <button class="btn btn-secondary" onclick="changePage(1)">&#8594;</button> <!-- Sağ ok işareti -->
+                                    </div>
+
+                                    <!-- Tam Ekran Galeri Modal -->
+                                    <div id="fullscreenGallery" class="fullscreen-gallery">
+                                        <span class="close-gallery" onclick="closeFullscreenGallery()">&times;</span>
+                                        <div class="fullscreen-carousel">
+                                            @for (int i = 0; i < Model.ImageUrls.Count; i++)
+                                            {
+                                                <div class="fullscreen-slide @(i == 0 ? "active" : "")">
+                                                    <img src="@Model.ImageUrls[i]" alt="@Model.Title" />
+                                                </div>
+                                            }
+                                            <!-- Tam Ekran Galeri için OK butonları -->
+                                            <button class="fullscreen-prev" onclick="changeFullscreenSlide(-1)">&#8592;</button>
+                                            <button class="fullscreen-next" onclick="changeFullscreenSlide(1)">&#8594;</button>
+                                        </div>
+                                    </div> *@
+                                }
+                            </div>
+
+                            <!-- Sağ Taraf: İlan Detayları ve Açıklama -->
+                            <br />
+                            <div class="property-details">
+                                <h4 class="text-center">@Model.Title</h4>
+                                <br />
+                                <p style="white-space: pre-wrap;">@Model.Description</p>
+                            </div>
+
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+
+            <style>
+                .property-details {
+                    background: #fff;
+                    border: 1px solid #ddd;
+                    border-radius: 8px;
+                    padding: 20px;
+                    margin-bottom: 20px;
+                }
+
+                .album-carousel {
+                    position: relative;
+                    width: 90%;
+                    max-width: 800px; /* Carousel genişliğini iki katına çıkardık */
+                    margin: 0 auto;
+                    border-radius: 8px;
+                    overflow: hidden;
+                }
+
+                .album-carousel-img {
+                    width: 800%;
+                    height: 400px; /* Carousel yüksekliğini sabit tutuyoruz */
+                    object-fit: cover;
+                }
+
+                .carousel-item {
+                    opacity: 1;
+                    height: 400px; /* Carousel öğelerinin yüksekliğini sabit tutuyoruz */
+                    object-fit: cover;
+                }
+
+                .carousel-control-prev, .carousel-control-next {
+                    position: absolute;
+                    bottom: 20px;
+                    z-index: 5;
+                    padding: 15px;
+                    border-radius: 50%;
+                    color: white;
+                    border: none;
+                }
+
+                .carousel-control-prev {
+                    left: 20px;
+                }
+
+                .carousel-control-next {
+                    right: 20px;
+                }
+
+                .carousel-control-prev-icon, .carousel-control-next-icon {
+                    background-color: white;
+                    width: 40px;
+                    height: 40px;
+                }
+
+                .property-details {
+                    width: 1000px; /* Carousel ile aynı genişliği verdiğinizden emin olun */
+                    margin: 0 auto; /* Ortalanmasını sağlar */
+                    padding: 20px;
+                    background-color: rgba(255, 255, 255, 0.8); /* İsteğe bağlı, arka plan rengi */
+                }
+
+                    .property-details h4 {
+                        font-size: 2.5rem; /* Başlık boyutunu biraz küçülttük */
+                        margin-bottom: 15px;
+                    }
+
+                    .property-details p {
+                        font-size: 1.25rem; /* Yazı boyutunu biraz küçülttük */
+                        line-height: 1.6;
+                    }
+
+                .gallery-thumbnail-container {
+                    width: 100px;
+                    height: 100px; /* Galeri küçük resimlerini daha küçük yapıyoruz */
+                }
+
+                .fullscreen-gallery {
+                    display: none;
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-color: rgba(0, 0, 0, 0.9);
+                    z-index: 9999;
+                }
+
+                .fullscreen-carousel {
+                    position: relative;
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+                .fullscreen-slide {
+                    display: none;
+                    width: 100%;
+                    height: 100%;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                    .fullscreen-slide.active {
+                        display: flex;
+                    }
+
+                    .fullscreen-slide img {
+                        max-width: 90%;
+                        max-height: 90vh;
+                        object-fit: contain;
+                    }
+
+                .close-gallery {
+                    position: absolute;
+                    top: 20px;
+                    right: 50px;
+                    color: #f1f1f1;
+                    font-size: 50px;
+                    font-weight: bold;
+                    cursor: pointer;
+                    z-index: 1000;
+                }
+
+                .fullscreen-prev, .fullscreen-next {
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    padding: 25px;
+                    color: white;
+                    font-weight: bold;
+                    font-size: 30px;
+                    border: none;
+                    background-color: transparent;
+                    cursor: pointer;
+                    z-index: 1000;
+                }
+
+                .fullscreen-prev {
+                    left: 20px;
+                }
+
+                .fullscreen-next {
+                    right: 20px;
+                }
+
+            </style>
+
+                        <script>
+                            let currentPage = 1;
+                            const imagesPerPage = 10;
+
+                            // Fotoğrafları sayfalara ayır
+                            function displayImages() {
+                                const imageContainer = document.getElementById('image-gallery');
+                                const startIndex = (currentPage - 1) * imagesPerPage;
+                                const endIndex = startIndex + imagesPerPage;
+                                const imagesToDisplay = @Html.Raw(Json.Serialize(Model.ImageUrls))
+                                                                                    .slice(startIndex, endIndex);
+
+                                imageContainer.innerHTML = '';  // Önceki fotoğrafları temizle
+                                imagesToDisplay.forEach((image, index) => {
+                                    const imgElement = document.createElement('img');
+                                    imgElement.src = image;
+                                    imgElement.classList.add('gallery-thumbnail');
+                                    imgElement.setAttribute('onclick', `changeImage(${startIndex + index})`);
+                                    const container = document.createElement('div');
+                                    container.classList.add('gallery-thumbnail-container');
+                                    container.appendChild(imgElement);
+                                    imageContainer.appendChild(container);
+                                });
+                            }
+
+                            function openFullscreenGallery() {
+                                const gallery = document.getElementById('fullscreenGallery');
+                                gallery.style.display = 'block';  // Tam ekran galeriyi göster
+                            }
+
+                            function closeFullscreenGallery() {
+                                const gallery = document.getElementById('fullscreenGallery');
+                                gallery.style.display = 'none';  // Tam ekran galeriyi gizle
+                            }
+                            function openFullscreenGallery() {
+                                // Tam ekran galeriyi aç
+                                document.getElementById('fullscreenGallery').style.display = 'block';
+
+                                // Aktif carousel item'ı bul
+                                const activeCarouselItem = document.querySelector('.carousel-item.active');
+                                const activeIndex = Array.from(activeCarouselItem.parentNode.children).indexOf(activeCarouselItem);
+
+                                // Fullscreen galeriye aktif index ile geçiş yap
+                                changeFullscreenSlide(activeIndex);
+                            }
+
+                            function closeFullscreenGallery() {
+                                // Tam ekran galeriyi kapat
+                                document.getElementById('fullscreenGallery').style.display = 'none';
+                            }
+
+                            function changeFullscreenSlide(index) {
+                                const slides = document.querySelectorAll('.fullscreen-slide');
+                                const totalSlides = slides.length;
+
+                                // Tüm slide'ları gizle
+                                slides.forEach(slide => slide.classList.remove('active'));
+
+                                // Geçerli slide'ı aktif yap
+                                slides[index].classList.add('active');
+                            }
+
+                            // Tam ekran galeri içinde resim değiştir
+                            function changeFullscreenSlide(direction) {
+                                const slides = document.querySelectorAll('.fullscreen-slide');
+                                let currentSlide = Array.from(slides).findIndex(slide => slide.classList.contains('active'));
+
+                                // Yeni slaytı hesapla
+                                let newSlide = currentSlide + direction;
+                                if (newSlide < 0) newSlide = slides.length - 1;
+                                if (newSlide >= slides.length) newSlide = 0;
+
+                                // Tüm slaytlardan active sınıfını kaldır
+                                slides.forEach(slide => slide.classList.remove('active'));
+                                slides[newSlide].classList.add('active');
+                            }
+
+
+                            // Fotoğrafı değiştirme fonksiyonu
+                            function changeImage(index) {
+                                const carouselItems = document.querySelectorAll('.carousel-item');
+                                carouselItems.forEach(item => item.classList.remove('active'));
+                                const targetItem = carouselItems[index];
+                                targetItem.classList.add('active');
+                            }
+
+                            // Sayfa değiştirme fonksiyonu
+                            function changePage(direction) {
+                                currentPage += direction;
+                                const totalPages = Math.ceil(@Model.ImageUrls.Count() / imagesPerPage);
+                                                                                if (currentPage < 1) currentPage = 1;
+                                if (currentPage > totalPages) currentPage = totalPages;
+                                displayImages();
+                            }
+
+                            // İlk sayfayı göster
+                            displayImages();
+                        </script>
+                    </article>
+                </div>
+            </div>
+        </body>
+
+        <style>
+            .post-modern-media img {
+                width: 2000%;
+                height: 350px;
+                object-fit: cover;
+            }
+        </style>
+
+        <br />
+
+        <footer class="section novi-background footer-advanced bg-gray-700">
+            <div class="footer-advanced-main">
+                <div class="container">
+                    <div class="row row-50 justify-content-between">
+                        <!-- About Us section - Sol tarafta -->
+                        <div class="col-lg-4 col-12">
+                            <h5 class="font-weight-bold text-uppercase text-white">About Us</h5>
+                            <p class="footer-advanced-text">Learn about our team and vision. We're committed to providing exceptional real estate services with integrity, expertise, and a personalized approach to meet your unique needs. Our mission is to create lasting relationships by exceeding expectations and delivering outstanding results. With a focus on innovation and client satisfaction, we strive to turn your property goals into reality.</p>
+                        </div>
+
+                        <!-- Gallery section - Sağ tarafta -->
+                        <div class="col-lg-4 offset-lg-4 col-12 mt-4 mt-lg-0">
+                            <h5 class="font-weight-bold text-uppercase text-white">Gallery</h5>
+                            <div class="row row-x-10" data-lightgallery="group">
+                                <div class="col-3 col-sm-4 col-md-3">
+                                    <a class="thumbnail-minimal" href="images/360_4 (2).jpg" data-lightgallery="item">
+                                        <img class="thumbnail-minimal-image" src="~/images/360_4 (2).jpg" alt="" />
+                                        <div class="thumbnail-minimal-caption"></div>
+                                    </a>
+                                </div>
+                                <div class="col-3 col-sm-4 col-md-3">
+                                    <a class="thumbnail-minimal" href="images/image0.jpeg" data-lightgallery="item">
+                                        <img class="thumbnail-minimal-image" src="~/images/image0.jpeg" alt="" />
+                                        <div class="thumbnail-minimal-caption"></div>
+                                    </a>
+                                </div>
+                                <div class="col-3 col-sm-4 col-md-3" href="images/1 (1)-min (1) (1) (1).jpg" data-lightgallery="item">
+                                    <img class="thumbnail-minimal-image" src="~/images/1 (1)-min (1) (1) (1).jpg" alt="" />
+                                    <div class="thumbnail-minimal-caption"></div>
+                                    </a>
+                                </div>
+                                <div class="col-3 col-sm-4 col-md-3">
+                                    <a class="thumbnail-minimal" href="images/GALLERY00004.jpg" data-lightgallery="item">
+                                        <img class="thumbnail-minimal-image" src="~/images/GALLERY00004.jpg" alt="" />
+                                        <div class="thumbnail-minimal-caption"></div>
+                                    </a>
+                                </div>
+                                <div class="col-3 col-sm-4 col-md-3">
+                                    <a class="thumbnail-minimal" href="images/EXTERIOR 14.jpg" data-lightgallery="item">
+                                        <img class="thumbnail-minimal-image" src="~/images/EXTERIOR 14.jpg" alt="" />
+                                        <div class="thumbnail-minimal-caption"></div>
+                                    </a>
+                                </div>
+                                <div class="col-3 col-sm-4 col-md-3">
+                                    <a class="thumbnail-minimal" href="images/image13.jpeg" data-lightgallery="item">
+                                        <img class="thumbnail-minimal-image" src="~/images/image13.jpeg" alt="" />
+                                        <div class="thumbnail-minimal-caption"></div>
+                                    </a>
+                                </div>
+                                <div class="col-3 col-sm-4 col-md-3">
+                                    <a class="thumbnail-minimal" href="images/image6.jpeg" data-lightgallery="item">
+                                        <img class="thumbnail-minimal-image" src="~/images/image6.jpeg" alt="" />
+                                        <div class="thumbnail-minimal-caption"></div>
+                                    </a>
+                                </div>
+                                <div class="col-3 col-sm-4 col-md-3">
+                                    <a class="thumbnail-minimal" href="images/361B_2 (1) (2) (1).jpg" data-lightgallery="item">
+                                        <img class="thumbnail-minimal-image" src="~/images/361B_2 (1) (2) (1).jpg" alt="" />
+                                        <div class="thumbnail-minimal-caption"></div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-advanced-aside">
+                <div class="container">
+                    <div class="footer-advanced-layout">
+                        <div>
+                            <ul class="list-nav">
+                                <li><a href="/Home">Home</a></li>
+                                <li><a href="/House">Houses</a></li>
+                                <li><a href="/Blog">Blog</a></li>
+                                <li><a href="/Contact">Contacts</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul class="footer-social-links list-inline list-inline-md">
+                                <li><a class="icon novi-icon icon-sm link-default mdi mdi-instagram" href="https://www.instagram.com/allureprojects?igsh=MXhxcjEyZGVtMW14aw==" target="_blank"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <hr>
+            </div>
+            <div class="footer-advanced-aside">
+                <div class="container">
+                    <div class="footer-advanced-layout">
+                        @* <a class="brand" href="index.html"><img src="images/Allure real estate- silver logo-1.png" alt="" width="115" height="34" srcset="images/Allure real estate- silver logo-1.png 2x" /></a> *@
+                        <!-- Rights-->
+                        <p class="rights"><span>&copy;&nbsp;</span><span class="copyright-year"></span> Allure Real Estate </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Global Mailform Output-->
+        <div class="snackbars" id="form-output-global"></div>
+        <!-- Javascript-->
+        <script src="js/core.min.js"></script>
+        <script src="js/site.js"></script>
+    </body>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/core.min.js" asp-append-version="true"></script>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/bootstrap.css" asp-append-version="true" />
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/lightgallery.min.js"></script>
+    <!-- Thumbnail Plugin -->
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script>
+    <!-- Zoom Plugin -->
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+
+</html>

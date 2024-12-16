@@ -1,0 +1,100 @@
+﻿@model Blog
+
+@{
+    Layout = "_AdminBlogLayout";
+}
+
+<h3 class="text-center" style="color:#343a40; font-size: 28px; font-weight: bold; margin-bottom: 30px;">Welcome to Edit Form</h3>
+
+<form asp-action="EditBlog" id="houseForm" enctype="multipart/form-data" method="post" style="max-width: 450px; margin: 0 auto; background: linear-gradient(145deg, #e0e0e0, #f7f7f7); padding: 30px; border-radius: 15px; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="row mb-3">
+        <div class="col-md-12 mb-4">
+            <label for="Title" style="font-weight: 600; color: #495057;">Edit Title</label>
+            <input type="text" id="Title" name="Title" value="@Model.Title" required placeholder="Edit Title" class="form-control" style="padding: 12px; border: 1px solid #ced4da; border-radius: 8px; background-color: #fdfdfd; transition: all 0.3s; box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);" />
+        </div>
+        <div class="col-md-12 mb-4">
+            <label for="Description" style="font-weight: 600; color: #495057;">Edit Description</label>
+            <textarea id="Description" name="Description" required placeholder="Edit Description" class="form-control" style="padding: 12px; border: 1px solid #ced4da; border-radius: 8px; background-color: #fdfdfd; transition: all 0.3s; box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);">@Model.Description</textarea>
+        </div>
+        <div class="col-md-12 mb-4">
+            <label for="Images" style="font-weight: 600; color: #495057;">Blog Images</label>
+            <input type="file" id="Images" name="Images" accept="image/*" multiple class="form-control" />
+        </div>
+
+        <div class="col-md-12 mb-4">
+            <ul id="imageList" style="margin-top: 15px; padding-left: 0; list-style-type: none;"></ul>
+        </div>
+        <div class="col-md-12 text-center">
+            <button type="submit" class="btn btn-primary" style="padding: 12px 30px; font-size: 18px; background-color: #007bff; border: none; border-radius: 8px; box-shadow: 0 8px 15px rgba(0, 123, 255, 0.3); transition: all 0.3s; font-weight: 600;">
+                Edit house
+            </button>
+        </div>
+    </div>
+</form>
+
+<script>
+    const imagesInput = document.getElementById('Images');
+    const imageList = document.getElementById('imageList');
+    const selectedFiles = new DataTransfer(); // Yeni dosya seçimi için
+
+    // Sayfa yüklendiğinde mevcut fotoğrafları listeye ekle
+    document.addEventListener('DOMContentLoaded', () => {
+        if (existingImages && Array.isArray(existingImages)) {
+            existingImages.forEach(imageUrl => {
+                addImageToList(imageUrl, true);
+            });
+        }
+    });
+
+    // Yeni fotoğraf seçimi yapıldığında listeyi güncelle
+    imagesInput.addEventListener('change', function (event) {
+        const files = Array.from(event.target.files); // Seçilen dosyaları diziye çevir
+        files.forEach(file => {
+            if (!Array.from(selectedFiles.files).some(f => f.name === file.name)) {
+                selectedFiles.items.add(file);
+                addImageToList(file.name, false);
+            }
+        });
+
+        imagesInput.files = selectedFiles.files; // Input dosyalarını güncelle
+    });
+
+    // Fotoğrafı listeye ekleyen fonksiyon
+    function addImageToList(fileNameOrUrl, isExisting = false) {
+        const listItem = document.createElement('li');
+        listItem.style.display = "flex";
+        listItem.style.alignItems = "center";
+        listItem.style.marginBottom = "10px";
+
+        const fileName = document.createElement('span');
+        fileName.textContent = fileNameOrUrl;
+        fileName.style.marginRight = "10px";
+
+        const removeButton = document.createElement('button');
+        removeButton.textContent = "Remove";
+        removeButton.style.padding = "5px 10px";
+        removeButton.style.backgroundColor = "#dc3545";
+        removeButton.style.color = "#fff";
+        removeButton.style.border = "none";
+        removeButton.style.borderRadius = "4px";
+        removeButton.style.cursor = "pointer";
+
+        removeButton.addEventListener('click', () => {
+            listItem.remove();
+            if (!isExisting) {
+                const remainingFiles = Array.from(selectedFiles.files).filter(f => f.name !== fileNameOrUrl);
+                selectedFiles.items.clear();
+                remainingFiles.forEach(f => selectedFiles.items.add(f));
+                imagesInput.files = selectedFiles.files;
+            }
+        });
+
+        listItem.appendChild(fileName);
+        listItem.appendChild(removeButton);
+        imageList.appendChild(listItem);
+    }
+
+</script>
+
